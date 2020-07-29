@@ -1,4 +1,5 @@
 const net = require('net');
+const {setupInput} = require('./input')
 const stdin = process.stdin;
 
 const connect = function() {
@@ -17,10 +18,11 @@ const connect = function() {
   conn.on('connect', () => {
     console.log("Successfully connected to game server")
     conn.write("Name: bsg")
-    conn.write("Move: up")
-    conn.write("Move: down")
-     conn.write("Move: left")
-    conn.write("Move: right")
+    setupInput(conn)
+    // conn.write("Move: up")
+    // conn.write("Move: down")
+    // conn.write("Move: left")
+    // conn.write("Move: right")
   })
 
   return conn;
